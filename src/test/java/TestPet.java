@@ -8,10 +8,10 @@ import org.codehaus.groovy.transform.sc.StaticCompilationMetadataKeys;
 import org.junit.jupiter.api.Test;
 
 // 2 classe
-public class TestUser {
+public class TestPet {
     // 2.1 atributos
     static String ct = "application/json"; // content-type
-    static String uriUser = "https://petstore.swagger.io/v2/user";
+    static String uriPet = "https://petstore.swagger.io/v2/pet";
 
     // 2.2 - funções e métodos
     // 2.2.1 - funções  e métodos comuns / uteis
