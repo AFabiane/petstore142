@@ -158,12 +158,23 @@ public class TestPet {
 
         // Criar a classe pet para receber o dados do csv
         Pet pet = new Pet();  // Instancia a classe User
-        
-        pet.petId = petId;
-        pet.petName = petName;
-        pet.catId = catId;
-        pet.catName = catName;
-        pet.status = status1;
+        Pet.Category category = pet.new Category(); // instancia a subclasse Category
+        Pet.Tag[] tags = new Pet.Tag[2]; // instancia a subclasse Tag
+        tags[0] = pet.new Tag();
+        tags[1] = pet.new Tag();
+
+        pet.id = petId;
+        pet.category = category; // associar a pet.category com a subclasse category
+        pet.category.id = catId;
+        pet.category.name = catName;
+        pet.name = petName;
+        // pet.photoUrls não precisa ser incluído porque será vazio
+        pet.tags = tags; // associa a pet.tags com a subclasse tags
+        pet.tags[0].id = 9;
+        pet.tags[0].name = "vacinado";  
+        pet.tags[0].id = 8;
+        pet.tags[0].name = "vermifugado";
+        pet.status = status1; // status inicial usado no Post = "available"
     
         // Criar um Json para o Body a ser enviado a partir da classe Pet e do CSV
         Gson gson = new Gson();  // Instancia a classe Gson como o objeto gson 
@@ -182,18 +193,10 @@ public class TestPet {
             .body("name", is(petName))
             .body("category.id", is(catId))
             .body("category.name", is(catName))
-            .body("statusCode", is(200))
-
-        
-
-     
+            .body("status", is(status1))   
 
             ;
-
-
     }
-
-
  }
 
   
